@@ -1,7 +1,6 @@
 // DOM Elements
 const form = document.getElementById('journey-form');
 const resultSection = document.getElementById('result');
-const getStartedBtn = document.getElementById('get-started-btn');
 const generateBtn = document.querySelector('.generate-btn');
 const fromInput = document.getElementById('from');
 const toInput = document.getElementById('to');
@@ -24,14 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeEventListeners() {
     // Form submission
     form.addEventListener('submit', handleFormSubmit);
-    
-    // Get started button
-    getStartedBtn.addEventListener('click', scrollToGenerator);
-    
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', handleSmoothScroll);
-    });
     
     // Autocomplete for "From" input
     fromInput.addEventListener('input', (e) => handleInputChange(e, 'from'));
@@ -344,26 +335,7 @@ function displayDeeplinkResult(deeplink) {
     }, 100);
 }
 
-// Scroll to generator section
-function scrollToGenerator() {
-    document.getElementById('generator').scrollIntoView({ 
-        behavior: 'smooth' 
-    });
-}
-
-// Handle smooth scrolling for navigation
-function handleSmoothScroll(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    const targetSection = document.querySelector(targetId);
-    
-    if (targetSection) {
-        targetSection.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-}
+// ...existing code...
 
 // Toast notification
 function showToast(message, type = 'error') {
