@@ -308,6 +308,9 @@ function displayDeeplinkResult(deeplink) {
             <input type="text" id="generated-deeplink" value="${deeplink}" readonly>
             <button id="copy-deeplink-btn" class="copy-button">Copy</button>
         </div>
+        <div class="deeplink-actions">
+            <a href="${deeplink}" target="_blank" class="deeplink-button">Open in SBB App</a>
+        </div>
     `;
     
     journeyInfo.appendChild(deeplinkContainer);

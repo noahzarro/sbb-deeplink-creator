@@ -429,6 +429,59 @@ main {
     outline-offset: 2px;
 }
 
+/* Deeplink container styles */
+.deeplink-container {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.deeplink-container .result-container {
+    margin-top: 0.5rem;
+}
+
+.deeplink-container input {
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+/* Deeplink actions styles */
+.deeplink-actions {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.deeplink-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.deeplink-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+.deeplink-button:active {
+    transform: translateY(0);
+}
+
+.deeplink-button:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .nav-container {
@@ -496,21 +549,4 @@ html {
 
 .generate-btn.loading::after {
     content: " Loading...";
-}
-
-/* Deeplink container styles */
-.deeplink-container {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #e9ecef;
-}
-
-.deeplink-container .result-container {
-    margin-top: 0.5rem;
-}
-
-.deeplink-container input {
-    font-family: monospace;
-    font-size: 0.9rem;
-    color: #495057;
 }
