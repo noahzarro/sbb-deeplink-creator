@@ -125,7 +125,7 @@ function updateHighlight(suggestions) {
 async function searchStations(query, type) {
     try {
         const encodedQuery = encodeURIComponent(query);
-        const response = await fetch(`http://transport.opendata.ch/v1/locations?query=${encodedQuery}`, {
+        const response = await fetch(`https://transport.opendata.ch/v1/locations?query=${encodedQuery}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'
