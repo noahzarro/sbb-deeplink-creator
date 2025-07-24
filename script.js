@@ -121,11 +121,11 @@ function updateHighlight(suggestions) {
     });
 }
 
-// Search stations using Swiss Transport API
+// Search stations using new Places API
 async function searchStations(query, type) {
     try {
         const encodedQuery = encodeURIComponent(query);
-        const response = await fetch(`https://transport.opendata.ch/v1/locations?query=${encodedQuery}`, {
+        const response = await fetch(`https://places-backend.uzwil-to-tokyo.ch/places?search=${encodedQuery}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'
@@ -142,8 +142,8 @@ async function searchStations(query, type) {
         const input = type === 'from' ? fromInput : toInput;
         input.classList.remove('loading');
         
-        if (data.stations && data.stations.length > 0) {
-            displaySuggestions(data.stations, type);
+        if (data.data && data.data.places && data.data.places.length > 0) {
+            displaySuggestions(data.data.places, type);
         } else {
             showNoResults(type);
         }
@@ -160,25 +160,25 @@ async function searchStations(query, type) {
 }
 
 // Display suggestions in the dropdown
-function displaySuggestions(stations, type) {
+function displaySuggestions(places, type) {
     const suggestionsList = type === 'from' ? fromSuggestions : toSuggestions;
     currentHighlighted = -1;
     
     // Clear existing suggestions
     suggestionsList.innerHTML = '';
     
-    if (stations.length === 0) {
+    if (places.length === 0) {
         showNoResults(type);
         return;
     }
     
     // Create suggestion items
-    stations.forEach((station, index) => {
+    places.forEach((place, index) => {
         const item = document.createElement('div');
         item.className = 'suggestion-item';
-        item.innerHTML = `<span class="station-name">${escapeHtml(station.name)}</span>`;
-        item.dataset.id = station.id;
-        item.dataset.name = station.name;
+        item.innerHTML = `<span class="station-name">${escapeHtml(place.name)}</span>`;
+        item.dataset.id = place.id;
+        item.dataset.name = place.name;
         
         // Add click event with proper event handling
         item.addEventListener('click', (e) => {
